@@ -3,6 +3,9 @@ package org.bjartek.dsl.functions
 //Inspired from https://github.com/s1monw1/kotlin-samples
 //https://kotlinexpertise.com/kotlin-conventions-operator-overloading/
 
+
+
+// See https://kotlinlang.org/docs/reference/operator-overloading.html
 data class Fraction(val numerator: Int, val denominator: Int) : Comparable<Fraction> {
 
    val decimal by lazy { numerator.toDouble() / denominator }

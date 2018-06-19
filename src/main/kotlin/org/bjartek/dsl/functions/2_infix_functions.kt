@@ -1,4 +1,5 @@
 package org.bjartek.dsl.functions
+
 //two function defined on Int that can be called in Infix position
 infix fun Int.over(denominator: Int) =
         Fraction(this, denominator).normalize

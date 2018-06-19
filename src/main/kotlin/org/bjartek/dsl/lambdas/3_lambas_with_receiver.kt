@@ -12,35 +12,25 @@ fun Person.address(block: Address.() -> Unit) {
     address = Address().apply(block)
 }
 
-val p3  = person {
+val p4 = person {
     name = "Bjarte Stien Karlsen"
     age = 40
     //conditional logic can be used in here.
-    if(true) {
+    if (true) {
         address {
             street = "Lofthusveien"
             number = 77
             city = "Lillesand"
-        }
-    }
-}
-
-val p4 = person("Bjarte Stien Karlsen") {
-    age = 40
-    address {
-        street = "Lofthusveien"
-        number = 77
-        city = "Lillesand"
-
-        //However the things below should not be allowed
-        name="asf"
-        address {
-            name= "uhOh"
+            //However the things below should not be allowed
+            name = "asf"
+            address {
+                name = "uhOh"
+            }
         }
     }
 }
 
 fun main(args: Array<String>) {
 
-   println(p4)
+    println(p4)
 }

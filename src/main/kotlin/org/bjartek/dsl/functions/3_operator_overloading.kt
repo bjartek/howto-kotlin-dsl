@@ -16,7 +16,11 @@ fun main(args: Array<String>) {
     println("$two + $twoThirds = ${two + twoThirds}")
     println("$two * $threeOverTwo = ${two * threeOverTwo}")
     println("$two / $threeOverTwo = ${two / threeOverTwo}")
-
+    
+    /*
+    Infix function calls have lower precedence than the arithmetic operators, type casts, and the rangeTo operator.
+    https://kotlinlang.org/docs/reference/grammar.html#precedence
+     */
 
     //Comparator
     if(3 over 2 > 2 over 2) println("Bigger")

@@ -10,7 +10,7 @@ fun main(args: Array<String>) {
         occupation="King"
         weapon {
             name="Excalibur"
-           // occupation="Sissy"
+           // occupation="Dead"
             //weapon {  }
         }
 
