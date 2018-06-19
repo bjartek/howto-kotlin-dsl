@@ -10,6 +10,7 @@ Other links:
  - https://github.com/zsmb13/VillageDSL
  - https://kotlinlang.org/docs/reference/type-safe-builders.html
  - https://kotlinexpertise.com/create-dsl-with-kotlin/
+ - https://github.com/kotlintest/kotlintest
  
  
 How I use this at work:
