@@ -5,7 +5,17 @@ package org.bjartek.dsl.functions
 
 data class Fraction(val numerator: Int, val denominator: Int) : Comparable<Fraction> {
 
-    val decimal by lazy { numerator.toDouble() / denominator }
+   val decimal by lazy { numerator.toDouble() / denominator }
+
+    //override the behavor of + - + /
+    operator fun plus(add: Fraction): Fraction {
+        return if (this.denominator == add.denominator) Fraction(this.numerator + add.numerator, denominator)
+        else {
+            val a = this * add.denominator
+            val b = add * this.denominator
+            Fraction(a.numerator + b.numerator, a.denominator).normalize
+        }
+    }
 
     operator fun minus(subtract: Fraction): Fraction {
         return if (this.denominator == subtract.denominator) Fraction(this.numerator - subtract.numerator, denominator)
@@ -16,29 +26,26 @@ data class Fraction(val numerator: Int, val denominator: Int) : Comparable<Fract
         }
     }
 
-    operator fun plus(add: Fraction): Fraction {
-        return if (this.denominator == add.denominator) Fraction(this.numerator + add.numerator, denominator)
-        else {
-            val a = this * add.denominator
-            val b = add * this.denominator
-            Fraction(a.numerator + b.numerator, a.denominator).normalize
-        }
-    }
-
     operator fun times(other: Fraction) =
             Fraction(numerator * other.numerator, denominator * other.denominator).normalize
 
     operator fun div(div: Fraction) = this * Fraction(div.denominator, div.numerator)
 
+
+    //Make it comparable
     override fun compareTo(other: Fraction) = decimal.compareTo(other.decimal)
 
+    //customize the toString
     override fun toString() = "$numerator/$denominator"
 
+
+    //support incrementor and decrementor
     operator fun dec() = Fraction(this.numerator - 1, this.denominator).normalize
 
     operator fun inc() = Fraction(this.numerator + 1, this.denominator).normalize
 
-    operator fun invoke(prefix: String = "") = println(prefix + toString())
+    //Handle when class is called as a function
+    operator fun invoke(prefix: String = "") = println("$prefix Fraction=${toString()} Decimal=${decimal}")
 
     val normalize by lazy {
         val gcd = numerator.gcd(denominator)

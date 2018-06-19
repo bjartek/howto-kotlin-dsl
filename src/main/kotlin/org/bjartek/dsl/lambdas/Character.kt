@@ -6,6 +6,7 @@ annotation class CharacterDsl
 
 @CharacterDsl
 data class Character(var name: String? = null,
+                     var occupation:String? = null,
                      var weapon: Weapon? = null
 )
 
